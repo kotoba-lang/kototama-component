@@ -1,12 +1,14 @@
 # tender-component
 
-Native Component Model engine adapter for Kototama.
+Kototama's **Component engine host** — a replaceable native engine process
+and the narrow JSON protocol used to execute an already admitted Component.
 
-`kototama` owns the tender contracts, admission envelope, provider boundary,
-and aiueos grant translation. This repository owns the replaceable native
-engine process and the narrow JSON protocol used to execute an already
-admitted Component. No WASI directories, environment, arguments, or inherited
-stdio are exposed.
+The GitHub name still says `tender-component`. That is a historical alias.
+The product is [`kototama`](https://github.com/kotoba-lang/kototama) (言霊).
+`kototama` owns the contracts, admission envelope, provider boundary, and
+aiueos grant translation. This repository owns the engine process. No WASI
+directories, environment, arguments, or inherited stdio are exposed.
+See root ADR-2608139980.
 
 The bundled Rust micro-TCB uses Wasmtime with a minimal feature set. Other
 engines may implement the same host protocol without entering `kototama` core.
