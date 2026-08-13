@@ -1,9 +1,9 @@
-# tender-component
+# kototama-component
 
 Kototama's **Component engine host** — a replaceable native engine process
 and the narrow JSON protocol used to execute an already admitted Component.
 
-The GitHub name still says `tender-component`. That is a historical alias.
+GitHub id `1312921812`. Previously `tender-component`; that URL still redirects.
 The product is [`kototama`](https://github.com/kotoba-lang/kototama) (言霊).
 `kototama` owns the contracts, admission envelope, provider boundary, and
 aiueos grant translation. This repository owns the engine process. No WASI
