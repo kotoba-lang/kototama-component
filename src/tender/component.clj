@@ -6,7 +6,7 @@
   provider adapters are implemented; the CLI must never become an ambient
   authority escape hatch."
   (:require [clojure.string :as str]
-            [clojure.data.json :as json]
+            [json.data-json :as json]
             [kotoba.abi.contract :as abi]
             [kototama.aiueos-adapter :as aiueos-adapter]
             [kototama.component-platform :as platform]
