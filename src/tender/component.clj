@@ -5,7 +5,7 @@
   inherited stdio. Effectful Components stay rejected until their typed WIT
   provider adapters are implemented; the CLI must never become an ambient
   authority escape hatch."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [json.data-json :as json]
             [kotoba.abi.contract :as abi]
             [kototama.aiueos-adapter :as aiueos-adapter]
