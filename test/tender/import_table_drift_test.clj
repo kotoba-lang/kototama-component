@@ -34,7 +34,7 @@
   Neither side is edited by this test. Making a divergence visible is the
   point; deciding it is the owner's."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is testing]]
             [kototama.aiueos-adapter :as aiueos-adapter]))
 
