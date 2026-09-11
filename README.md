@@ -60,7 +60,7 @@ moved CI to the murakumo fleet. The last run was 2026-08-04, and the fleet has
 no gate for this repository yet. So the fixtures are intact and correct, and
 nothing is currently running them. Porting those qualification jobs to
 `scripts/fleet-ci/gates.edn` is what would change that answer; until then the
-`clojure -M:test` suite below is the only thing this repository executes.
+`kbb -M:test` suite below is the only thing this repository executes.
 
 Nothing executes the cores in-process, and that part is not a gap.
 
@@ -133,6 +133,6 @@ capabilities change without that table changing, and if a `.kir.edn` or a
 `kotoba.kir` require appears while any core still carries an effect.
 
 ```sh
-clojure -M:test
+kbb -M:test
 cargo test --locked --manifest-path native/component-host/Cargo.toml
 ```
