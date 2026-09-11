@@ -59,5 +59,5 @@ ambient outbound access. These are different safety mechanisms and therefore
 different evidence; engine diversity is not claimed to make their TCBs
 identical.
 
-`test/tender/component_e2e_test.clj` and the `workerd-component` CI job are the
+`test/tender/component_e2e_test.cljk` and the `workerd-component` CI job are the
 normative executable evidence.

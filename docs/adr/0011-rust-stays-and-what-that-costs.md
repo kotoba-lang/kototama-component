@@ -55,7 +55,7 @@ translated upstream and refused here.
 defect. Two closed sets that gate the same thing, in two languages, with no
 stated relationship, cannot be told apart from drift.
 
-`test/tender/import_table_drift_test.clj` pins the relationship as it stands.
+`test/tender/import_table_drift_test.cljk` pins the relationship as it stands.
 It reads `allowed_binding` out of the Rust source rather than mirroring it —
 a mirror would be a third copy and would drift from both — and asserts the
 three groups above. It does not assert that the sets agree, because deciding
