@@ -1,5 +1,5 @@
 (ns tender.component-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [tender.component :as component]))
 
 (deftest native-ability-protocol-preserves-qualified-operation
