@@ -4,7 +4,7 @@
    This is deliberately opt-in because it needs the Rust micro-TCB executable.
    CI enables it after building that executable; ordinary Clojure unit tests
    retain their fast, host-independent path."
-  (:require [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
             [kotoba.abi.contract :as abi]
             [kotoba.compiler.core :as compiler]
             [kototama.aiueos-adapter :as adapter]
@@ -29,8 +29,8 @@
    :abilities {} :runtime-bindings {} :ambient-wasi abi/ambient-wasi?
    :budgets {:fuel 100000 :memory-pages 16 :deadline-ms 10000}
    :identity {:component-cid (mf/cidv1-raw bytes)
-              :package-lock-cid (mf/cidv1-raw (.getBytes "e2e-lock" "UTF-8"))
-              :definition-cids #{(mf/cidv1-raw (.getBytes "e2e-definition" "UTF-8"))}}})
+              :package-lock-cid (mf/cidv1-raw (kbytes/utf8-bytes "e2e-lock"))
+              :definition-cids #{(mf/cidv1-raw (kbytes/utf8-bytes "e2e-definition"))}}})
 
 (defn- typed-component-world [bytes host-sha256]
   {:target abi/component-target-v2 :wasi-version abi/wasi-version :profile :sync
@@ -39,12 +39,12 @@
    :budgets {:fuel 100000 :memory-pages 4 :deadline-ms 10000}
    :runtime-bindings {:component-host-sha256 host-sha256}
    :identity {:component-cid (mf/cidv1-raw bytes)
-              :package-lock-cid (mf/cidv1-raw (.getBytes "v3-e2e-lock" "UTF-8"))
+              :package-lock-cid (mf/cidv1-raw (kbytes/utf8-bytes "v3-e2e-lock"))
               :definition-cids
-              #{(mf/cidv1-raw (.getBytes "v3-e2e-definition" "UTF-8"))}}})
+              #{(mf/cidv1-raw (kbytes/utf8-bytes "v3-e2e-definition"))}}})
 
 (defn- cid [text]
-  (mf/cidv1-raw (.getBytes ^String text "UTF-8")))
+  (mf/cidv1-raw (kbytes/utf8-bytes ^String text)))
 
 (defn- execution-identity [component-bytes]
   {:format :kotoba.execution-identity/v1
@@ -52,7 +52,7 @@
    :artifact-cid (cid "e2e-artifact")
    :compiler-contract (cid "e2e-compiler-contract")
    :component-cid (mf/cidv1-raw component-bytes)
-   :wit-world-cid (mf/cidv1-raw (.getBytes ^String (abi/world-wit [7]) "UTF-8"))
+   :wit-world-cid (mf/cidv1-raw (kbytes/utf8-bytes ^String (abi/world-wit [7])))
    :package-lock-cid (cid "e2e-package-lock")
    :policy-cid (cid "e2e-policy")
    :policy-decision-cid (cid "e2e-decision")

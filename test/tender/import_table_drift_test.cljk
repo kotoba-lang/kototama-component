@@ -33,7 +33,7 @@
 
   Neither side is edited by this test. Making a divergence visible is the
   point; deciding it is the owner's."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is testing]]
             [kototama.aiueos-adapter :as aiueos-adapter]))
@@ -48,7 +48,7 @@
   is a third copy of the same closed set and would drift from both."
   []
   (let [f (io/file resident-host-source)]
-    (when (.exists f)
+    (when (io/exists? f)
       (let [text (slurp f)
             start (str/index-of text "fn allowed_binding")
             end (when start (str/index-of text "\n}" start))]
