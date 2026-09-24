@@ -4,7 +4,7 @@
    This is deliberately opt-in because it needs the Rust micro-TCB executable.
    CI enables it after building that executable; ordinary Clojure unit tests
    retain their fast, host-independent path."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.abi.contract :as abi]
             [kotoba.compiler.core :as compiler]
             [kototama.aiueos-adapter :as adapter]
