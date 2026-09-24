@@ -25,7 +25,7 @@
   These tests are the gate on that reasoning. They fail if someone gives an
   effectful core an in-process seam, and they fail if a core's declared
   authority changes without this file changing with it."
-  (:require [clojure.edn :as edn]
+  (:require [kotoba.lang.edn :as edn]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is testing]]))
