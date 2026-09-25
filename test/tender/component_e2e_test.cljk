@@ -4,7 +4,7 @@
    This is deliberately opt-in because it needs the Rust micro-TCB executable.
    CI enables it after building that executable; ordinary Clojure unit tests
    retain their fast, host-independent path."
-  (:require [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.lang.error :as kerror] [kotoba.bytes :as kbytes] [kotoba.test :refer [deftest is testing]]
             [kotoba.abi.contract :as abi]
             [kotoba.compiler.core :as compiler]
             [kototama.aiueos-adapter :as adapter]
@@ -143,13 +143,13 @@
             (let [calls (atom 0)
                   epoch-source #(if (= 1 (swap! calls inc)) 1 2)]
               (is (thrown-with-msg?
-                   clojure.lang.ExceptionInfo #"lease denies"
+                   kerror/ExceptionInfo #"lease denies"
                    (run-on-host artifact engine runtime providers
                                 {:lease-epoch-source epoch-source}))))))
         (testing "deny-by-default policy is engine-independent"
           (doseq [[runtime engine] [[:wasmtime-component host]
                                     [:jco-component jco-host]]]
-            (is (thrown? clojure.lang.ExceptionInfo
+            (is (thrown? kerror/ExceptionInfo
                          (run-on-host artifact engine runtime providers
                                       {:policy-overlay
                                        {:aiueos/require-signed true}})))))
@@ -164,7 +164,7 @@
             (doseq [[runtime engine] [[:wasmtime-component host]
                                       [:jco-component jco-host]]]
               (is (thrown?
-                   clojure.lang.ExceptionInfo
+                   kerror/ExceptionInfo
                    (run-on-host twice engine runtime providers {}))))))))
     ;; The executable is a deliberately separate native TCB.  Unit-test
     ;; invocations do not build it implicitly; CI sets this variable after

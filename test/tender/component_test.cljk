@@ -1,5 +1,5 @@
 (ns tender.component-test
-  (:require [kotoba.test :refer [deftest is testing]]
+  (:require [kotoba.lang.error :as kerror] [kotoba.test :refer [deftest is testing]]
             [tender.component :as component]))
 
 (deftest native-ability-protocol-preserves-qualified-operation
@@ -18,7 +18,7 @@
              :deadline-ms 10
              :audit-id "serialization-test"}))))
   (testing "an unqualified operation fails closed"
-    (is (thrown? clojure.lang.ExceptionInfo
+    (is (thrown? kerror/ExceptionInfo
                  (#'component/host-ability {:operation :now})))))
 
 (deftest aiueos-effective-artifact-cannot-be-widened-by-the-compiler-artifact
