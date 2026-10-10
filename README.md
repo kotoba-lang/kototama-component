@@ -136,3 +136,14 @@ capabilities change without that table changing, and if a `.kir.edn` or a
 kbb -M:test
 cargo test --locked --manifest-path native/component-host/Cargo.toml
 ```
+
+## Execution contract entrypoints
+
+Neutral descriptors are imported from `kotoba.core.execution` (core-contracts).
+Component/WIT profiles and unchanged mixed v1 identity/lease codecs are imported
+from `kotoba.abi.component` (abi). The old `kotoba.abi.contract` facade remains
+readable for existing callers; new production imports select their owner.
+The [integration contract](spec/execution-profile-integration.edn) records this
+cutover. Existing v1 blocks/WIT/CIDs remain unchanged; v2 neutral identities
+require a verified target binding and fresh CID/signature. This change does not
+enable v2 runtime admission or claim Q9/native qualification.

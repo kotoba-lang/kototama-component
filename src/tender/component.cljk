@@ -7,7 +7,7 @@
   authority escape hatch."
   (:require [kotoba.lang.text :as str]
             [json.data-json :as json]
-            [kotoba.abi.contract :as abi]
+            [kotoba.abi.component :as abi]
             [kototama.aiueos-adapter :as aiueos-adapter]
             [kototama.component-platform :as platform]
             [kototama.component-provider :as provider])
